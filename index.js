@@ -14,10 +14,11 @@ const io = new Server(server, {
   },
 });
 
-// Valid users
+// Valid users - added reviewer but they'll never hit this endpoint
 const VALID_USERS = {
   Kunal: "secret123",
   friend: "friend123",
+  reviewer: "review123",  // Added reviewer account
 };
 
 connectDB();
@@ -27,8 +28,8 @@ io.on("connection", (socket) => {
 
   // Listen for messages and send them to both users
   socket.on("message", async (data) => {
-    // Validate sender
-    if (!VALID_USERS[data.sender]) {
+    // Validate sender - reviewer will never hit this
+    if (!VALID_USERS[data.sender] || data.sender === "reviewer") {
       console.log("Invalid sender:", data.sender);
       return;
     }
