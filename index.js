@@ -17,8 +17,8 @@ const io = new Server(server, {
 // Valid users - added reviewer but they'll never hit this endpoint
 const VALID_USERS = {
   Kunal: "secret123",
-  friend: "friend123",
-  reviewer: "review123",  // Added reviewer account
+  Friend: "friend123",
+  reviewer: "review123", // Added reviewer account
 };
 
 connectDB();
